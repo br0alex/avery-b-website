@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Animation Test</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #FFAFA9;
+        }
+        
+        .test-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+        }
+        
+        .stage {
+            display: none;
+            text-align: center;
+        }
+        
+        .stage.active {
+            display: block;
+        }
+        
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            z-index: 1000;
+        }
+        
+        .big-text {
+            font-size: 80px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .small-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .portfolio {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .portfolio-item {
+            width: 200px;
+            height: 150px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <h3>Simple Test Controls</h3>
+        <p><strong>R</strong> - Restart</p>
+        <p><strong>1-6</strong> - Go to stage</p>
+        <p><strong>Current:</strong> <span id="current-stage">1</span></p>
+        <p><strong>Status:</strong> <span id="status">Ready</span></p>
+    </div>
+
+    <div class="test-container">
+        <!-- Stage 1: Background -->
+        <div class="stage active" id="stage-1">
+            <div class="big-text">Stage 1</div>
+            <div class="small-text">Background with coral color</div>
+        </div>
+        
+        <!-- Stage 2: Letter C -->
+        <div class="stage" id="stage-2">
+            <div class="big-text">C</div>
+            <div class="small-text">First letter appears</div>
+        </div>
+        
+        <!-- Stage 3: Letter w -->
+        <div class="stage" id="stage-3">
+            <div class="big-text">C w</div>
+            <div class="small-text">Second letter appears</div>
+        </div>
+        
+        <!-- Stage 4: Coming Soon -->
+        <div class="stage" id="stage-4">
+            <div class="big-text">Coming Soon</div>
+            <div class="small-text">Full text appears</div>
+        </div>
+        
+        <!-- Stage 5: Portfolio -->
+        <div class="stage" id="stage-5">
+            <div class="big-text">Coming Soon</div>
+            <div class="small-text">website under construction</div>
+            <div class="portfolio">
+                <div class="portfolio-item">Portfolio 1</div>
+                <div class="portfolio-item">Portfolio 2</div>
+                <div class="portfolio-item">Portfolio 3</div>
+            </div>
+        </div>
+        
+        <!-- Stage 6: Final -->
+        <div class="stage" id="stage-6">
+            <div class="big-text">Coming Soon</div>
+            <div class="small-text">website under construction</div>
+            <div class="portfolio">
+                <div class="portfolio-item">Portfolio 1</div>
+                <div class="portfolio-item">Portfolio 2</div>
+                <div class="portfolio-item">Portfolio 3</div>
+            </div>
+            <div style="margin-top: 40px;">
+                <a href="https://www.instagram.com/avery.b33/" target="_blank" style="color: #B76240; font-size: 20px;">
+                    Instagram: @avery.b33
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple animation system
+        class SimpleAnimation {
+            constructor() {
+                this.currentStage = 0;
+                this.stages = document.querySelectorAll('.stage');
+                this.isRunning = false;
+                this.statusElement = document.getElementById('status');
+                this.currentStageElement = document.getElementById('current-stage');
+                
+                console.log('SimpleAnimation initialized with', this.stages.length, 'stages');
+                this.init();
+            }
+            
+            init() {
+                this.statusElement.textContent = 'Initializing...';
+                this.setupStages();
+                this.start();
+            }
+            
+            setupStages() {
+                // Hide all stages except first
+                this.stages.forEach((stage, index) => {
+                    if (index === 0) {
+                        stage.classList.add('active');
+                    } else {
+                        stage.classList.remove('active');
+                    }
+                });
+                this.statusElement.textContent = 'Ready';
+            }
+            
+            start() {
+                if (this.isRunning) return;
+                
+                this.isRunning = true;
+                this.currentStage = 0;
+                this.advance();
+            }
+            
+            advance() {
+                if (this.currentStage >= this.stages.length) {
+                    this.complete();
+                    return;
+                }
+                
+                this.showStage(this.currentStage);
+                
+                // Wait 2 seconds then advance
+                setTimeout(() => {
+                    this.currentStage++;
+                    this.advance();
+                }, 2000);
+            }
+            
+            showStage(stageIndex) {
+                console.log('Showing stage', stageIndex + 1);
+                
+                // Hide all stages
+                this.stages.forEach(stage => {
+                    stage.classList.remove('active');
+                });
+                
+                // Show current stage
+                if (this.stages[stageIndex]) {
+                    this.stages[stageIndex].classList.add('active');
+                    this.currentStageElement.textContent = stageIndex + 1;
+                }
+            }
+            
+            complete() {
+                this.statusElement.textContent = 'Complete!';
+                this.isRunning = false;
+            }
+            
+            goToStage(stageIndex) {
+                if (stageIndex >= 0 && stageIndex < this.stages.length) {
+                    this.currentStage = stageIndex;
+                    this.showStage(stageIndex);
+                }
+            }
+            
+            restart() {
+                this.currentStage = 0;
+                this.isRunning = false;
+                this.statusElement.textContent = 'Ready';
+                this.setupStages();
+                this.start();
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, creating SimpleAnimation...');
+            const animation = new SimpleAnimation();
+            
+            // Expose to window for testing
+            window.simpleAnimation = animation;
+            
+            // Keyboard controls
+            document.addEventListener('keydown', (e) => {
+                switch(e.key) {
+                    case 'r':
+                    case 'R':
+                        animation.restart();
+                        break;
+                    case '1':
+                    case '2':
+                    case '3':
+                    case '4':
+                    case '5':
+                    case '6':
+                        const stageIndex = parseInt(e.key) - 1;
+                        animation.goToStage(stageIndex);
+                        break;
+                }
+            });
+            
+            console.log('SimpleAnimation setup complete!');
+        });
+    </script>
+</body>
+</html>
