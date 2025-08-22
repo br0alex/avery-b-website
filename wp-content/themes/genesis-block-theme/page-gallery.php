@@ -9,12 +9,21 @@
 get_header(); ?>
 
 <div class="gallery-landing-page">
-    <!-- Sticky Banner -->
-    <div class="sticky-banner">
-        <div class="banner-text">
-            NEW SITE // COMING SOON
+            <!-- Sticky Banner -->
+        <div class="sticky-banner">
+            <div class="banner-text-container">
+                <span class="banner-text">NEW SITE // COMING SOON</span>
+                <span class="banner-text">NEW SITE // COMING SOON</span>
+                <span class="banner-text">NEW SITE // COMING SOON</span>
+                <span class="banner-text">NEW SITE // COMING SOON</span>
+                <span class="banner-text">NEW SITE // COMING SOON</span>
+                <span class="banner-text">NEW SITE // COMING SOON</span>
+                <span class="banner-text">NEW SITE // COMING SOON</span>
+                <span class="banner-text">NEW SITE // COMING SOON</span>
+                <span class="banner-text">NEW SITE // COMING SOON</span>
+                <span class="banner-text">NEW SITE // COMING SOON</span>
+            </div>
         </div>
-    </div>
 
     <!-- Main Content -->
     <div class="main-content">

@@ -5,7 +5,7 @@
 
 .gallery-landing-page {
     min-height: 100vh;
-    background: #FFB074;
+    background: #FFECD9;
     font-family: 'Kay Pho Du', sans-serif;
     position: relative;
     overflow-x: hidden;
@@ -25,14 +25,19 @@
     justify-content: center;
 }
 
+.banner-text-container {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll-text 20s linear infinite;
+}
+
 .banner-text {
     color: #FFFFFF;
     font-family: 'Kay Pho Du', sans-serif;
     font-weight: 600;
     font-size: 24px;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: scroll-text 20s linear infinite;
+    margin-right: 60px;
+    flex-shrink: 0;
 }
 
 @keyframes scroll-text {
