@@ -105,7 +105,8 @@
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 0.8s ease-in-out;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,6 +114,7 @@
 
 .stage.active {
     opacity: 1;
+    visibility: visible;
 }
 
 .stage-content {
@@ -284,6 +286,7 @@
 
 .stage-1 {
     opacity: 1;
+    visibility: visible;
 }
 
 .stage-2 .text-c {
@@ -333,6 +336,13 @@
     margin: 0 auto;
     opacity: 0;
     animation: fadeInUp 1s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ========================================
