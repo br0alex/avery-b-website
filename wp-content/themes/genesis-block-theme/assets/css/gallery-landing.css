@@ -1,173 +1,168 @@
-/* Gallery Landing Page Styles */
+/* Gallery Landing Page Styles - Exact Specifications */
+
+/* Import Kay Pho Du font */
+@import url('https://fonts.googleapis.com/css2?family=Kay+Pho+Du:wght@600&display=swap');
 
 .gallery-landing-page {
     min-height: 100vh;
-    background: #ffffff;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-}
-
-.gallery-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
-/* Gallery Header */
-.gallery-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.gallery-title h1 {
-    font-size: 48px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin: 0;
-    letter-spacing: -0.02em;
-}
-
-/* Gallery Grid */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    margin-bottom: 60px;
-}
-
-.gallery-item {
+    background: #FFB074;
+    font-family: 'Kay Pho Du', sans-serif;
     position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    cursor: pointer;
+    overflow-x: hidden;
 }
 
-.gallery-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-}
-
-.gallery-image {
-    width: 100%;
-    height: 280px;
-    overflow: hidden;
-}
-
-.gallery-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover .gallery-image img {
-    transform: scale(1.05);
-}
-
-.gallery-overlay {
-    position: absolute;
-    bottom: 0;
+/* Sticky Banner */
+.sticky-banner {
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-    color: white;
-    padding: 30px 20px 20px;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
+    height: 58px;
+    background: #A66145;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.gallery-item:hover .gallery-overlay {
-    transform: translateY(0);
-}
-
-.gallery-overlay h3 {
-    font-size: 20px;
+.banner-text {
+    color: #FFFFFF;
+    font-family: 'Kay Pho Du', sans-serif;
     font-weight: 600;
-    margin: 0 0 8px 0;
+    font-size: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: scroll-text 20s linear infinite;
 }
 
-.gallery-overlay p {
-    font-size: 14px;
-    margin: 0;
-    opacity: 0.9;
-    line-height: 1.4;
+@keyframes scroll-text {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
 }
 
-/* Gallery Navigation */
-.gallery-navigation {
+/* Main Content */
+.main-content {
+    padding-top: 58px; /* Account for sticky banner */
+    min-height: calc(100vh - 58px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Photo Gallery Container */
+.gallery-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 40px;
 }
 
-.nav-btn {
-    padding: 12px 24px;
-    border: 2px solid #e0e0e0;
-    background: transparent;
-    color: #666;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.gallery-border {
+    width: 1434px;
+    height: 819px;
+    border: 2px solid #A66145;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
 }
 
-.nav-btn:hover {
-    border-color: #1a1a1a;
-    color: #1a1a1a;
+.gallery-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.nav-btn.active {
-    background: #1a1a1a;
-    color: white;
-    border-color: #1a1a1a;
+.gallery-placeholder {
+    text-align: center;
+    color: #A66145;
+    font-size: 18px;
+}
+
+.gallery-placeholder p {
+    margin: 0;
+}
+
+/* Instagram Link */
+.instagram-link {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.instagram-link a {
+    color: #A66145;
+    font-family: 'Kay Pho Du', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.instagram-link a:hover {
+    opacity: 0.8;
+}
+
+/* Bottom Right Image */
+.bottom-right-image {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.bottom-right-image img {
+    max-width: 200px;
+    height: auto;
 }
 
 /* Responsive Design */
+@media (max-width: 1500px) {
+    .gallery-border {
+        width: 90vw;
+        height: calc(90vw * 0.57); /* Maintain aspect ratio */
+        max-width: 1434px;
+        max-height: 819px;
+    }
+}
+
 @media (max-width: 768px) {
-    .gallery-container {
-        padding: 20px 15px;
+    .banner-text {
+        font-size: 20px;
     }
     
-    .gallery-title h1 {
-        font-size: 36px;
+    .gallery-border {
+        width: 95vw;
+        height: calc(95vw * 0.57);
     }
     
-    .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .instagram-link a {
+        font-size: 20px;
     }
     
-    .gallery-image {
-        height: 240px;
-    }
-    
-    .gallery-navigation {
-        gap: 15px;
-    }
-    
-    .nav-btn {
-        padding: 10px 20px;
-        font-size: 13px;
+    .bottom-right-image img {
+        max-width: 150px;
     }
 }
 
 @media (max-width: 480px) {
-    .gallery-title h1 {
-        font-size: 28px;
+    .banner-text {
+        font-size: 18px;
     }
     
-    .gallery-container {
-        padding: 15px 10px;
+    .gallery-border {
+        width: 98vw;
+        height: calc(98vw * 0.57);
     }
     
-    .gallery-grid {
-        gap: 15px;
+    .instagram-link a {
+        font-size: 18px;
     }
     
-    .gallery-image {
-        height: 200px;
+    .bottom-right-image img {
+        max-width: 120px;
     }
 }
