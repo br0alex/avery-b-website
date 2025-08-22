@@ -104,17 +104,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }
 
 .stage.active {
-    opacity: 1;
-    visibility: visible;
+    display: flex;
 }
 
 .stage-content {
@@ -182,10 +178,12 @@
     gap: 0;
     transform: translateX(-100%);
     transition: transform 1.2s ease-out;
+    opacity: 0;
 }
 
 .portfolio-showcase.visible {
     transform: translateX(0);
+    opacity: 1;
 }
 
 .portfolio-frame {
@@ -278,52 +276,6 @@
 
 .instagram-link a:hover {
     color: #8F5A3F;
-}
-
-/* ========================================
-   STAGE TRANSITIONS
-   ======================================== */
-
-.stage-1 {
-    opacity: 1;
-    visibility: visible;
-}
-
-.stage-2 .text-c {
-    animation: textReveal 0.8s ease-out 0.5s forwards;
-}
-
-.stage-3 .text-w {
-    animation: textReveal 0.8s ease-out 0.5s forwards;
-}
-
-.stage-4 .text-coming-soon {
-    animation: textReveal 0.8s ease-out 0.5s forwards;
-}
-
-.stage-5 .text-website {
-    animation: textReveal 0.8s ease-out 0.5s forwards;
-}
-
-.stage-5 .portfolio-showcase {
-    animation: slideInPortfolio 1.2s ease-out 1s forwards;
-}
-
-.stage-6 .instagram-link {
-    animation: textReveal 0.8s ease-out 1s forwards;
-}
-
-@keyframes textReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInPortfolio {
-    to {
-        transform: translateX(0);
-    }
 }
 
 /* ========================================

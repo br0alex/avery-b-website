@@ -11,16 +11,6 @@ class LandingAnimation {
         this.currentStage = 0;
         this.isAnimating = false;
         
-        // Animation timing (in milliseconds)
-        this.stageTimings = [
-            2000,  // Stage 1: Initial state (longer to see background)
-            2000,  // Stage 2: First letter appears
-            2000,  // Stage 3: More text appears
-            2000,  // Stage 4: Full "Coming Soon"
-            3000,  // Stage 5: Portfolio showcase
-            4000   // Stage 6: Final state with Instagram link
-        ];
-        
         console.log('LandingAnimation initialized with', this.stages.length, 'stages');
         this.init();
     }
@@ -80,21 +70,18 @@ class LandingAnimation {
         // Show current stage
         this.showStage(this.currentStage);
         
-        // Wait for the stage duration, then advance
-        const stageDuration = this.stageTimings[this.currentStage];
-        console.log('Stage', this.currentStage + 1, 'will last for', stageDuration, 'ms');
-        
+        // Wait 2 seconds then advance (simplified timing)
         setTimeout(() => {
             this.currentStage++;
             this.advanceToNextStage();
-        }, stageDuration);
+        }, 2000);
     }
     
     showStage(stageIndex) {
         console.log('Showing stage', stageIndex + 1);
         
         // Hide all stages
-        this.stages.forEach((stage, index) => {
+        this.stages.forEach(stage => {
             stage.classList.remove('active');
         });
         
@@ -114,64 +101,29 @@ class LandingAnimation {
         
         console.log('Triggering animations for stage', stageIndex + 1);
         
-        switch(stageIndex) {
-            case 1: // Stage 2: First letter appears
-                this.animateTextElement(currentStage, '.text-c');
-                break;
-                
-            case 2: // Stage 3: More text appears
-                this.animateTextElement(currentStage, '.text-w');
-                break;
-                
-            case 3: // Stage 4: Full "Coming Soon"
-                this.animateTextElement(currentStage, '.text-coming-soon');
-                break;
-                
-            case 4: // Stage 5: Portfolio showcase
-                this.animateTextElement(currentStage, '.text-website');
-                this.animatePortfolioShowcase(currentStage);
-                break;
-                
-            case 5: // Stage 6: Final state
-                this.animateInstagramLink(currentStage);
-                break;
-        }
-    }
-    
-    animateTextElement(stage, selector) {
-        const element = stage.querySelector(selector);
-        if (element) {
-            console.log('Animating text element:', selector);
-            element.style.animation = 'textReveal 0.8s ease-out forwards';
-        } else {
-            console.warn('Text element not found:', selector);
-        }
-    }
-    
-    animatePortfolioShowcase(stage) {
-        const portfolioShowcase = stage.querySelector('.portfolio-showcase');
-        if (portfolioShowcase) {
-            console.log('Animating portfolio showcase');
-            // Add a small delay before sliding in
-            setTimeout(() => {
-                portfolioShowcase.style.animation = 'slideInPortfolio 1.2s ease-out forwards';
-            }, 500);
-        } else {
-            console.warn('Portfolio showcase not found');
-        }
-    }
-    
-    animateInstagramLink(stage) {
-        const instagramLink = stage.querySelector('.instagram-link');
-        if (instagramLink) {
-            console.log('Animating Instagram link');
-            // Add a delay before showing the Instagram link
-            setTimeout(() => {
-                instagramLink.style.animation = 'textReveal 0.8s ease-out forwards';
-            }, 1000);
-        } else {
-            console.warn('Instagram link not found');
-        }
+        // Add visible class to text elements for this stage
+        setTimeout(() => {
+            const textElements = currentStage.querySelectorAll('.text-element');
+            textElements.forEach(element => {
+                element.classList.add('visible');
+            });
+            
+            // Special handling for portfolio showcase
+            if (stageIndex === 4 || stageIndex === 5) {
+                const portfolioShowcase = currentStage.querySelector('.portfolio-showcase');
+                if (portfolioShowcase) {
+                    portfolioShowcase.classList.add('visible');
+                }
+            }
+            
+            // Special handling for Instagram link
+            if (stageIndex === 5) {
+                const instagramLink = currentStage.querySelector('.instagram-link');
+                if (instagramLink) {
+                    instagramLink.classList.add('visible');
+                }
+            }
+        }, 500);
     }
     
     completeAnimation() {
