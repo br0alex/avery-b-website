@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working Landing Page - Figma Design</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #FFAFA9;
+        }
+        
+        .landing-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stage {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+        }
+        
+        .stage.active {
+            display: flex;
+        }
+        
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            z-index: 1000;
+            max-width: 250px;
+        }
+        
+        .big-text {
+            font-size: 139px;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        
+        .small-text {
+            font-size: 29px;
+            font-weight: normal;
+            margin-bottom: 20px;
+            max-width: 1041px;
+            line-height: 1.2;
+        }
+        
+        .portfolio-showcase {
+            display: flex;
+            gap: 0;
+            margin-top: 40px;
+            transform: translateX(-100%);
+            transition: transform 1.2s ease-out;
+        }
+        
+        .portfolio-showcase.visible {
+            transform: translateX(0);
+        }
+        
+        .portfolio-frame {
+            width: 400px;
+            height: 300px;
+            border: 2px solid #A66145;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+        
+        .frame-1 { background: #6B886F; }
+        .frame-2 { background: #E4C8F0; }
+        .frame-3 { background: #E5E0FF; }
+        
+        .portfolio-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .instagram-link {
+            margin-top: 40px;
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+        
+        .instagram-link.visible {
+            opacity: 1;
+        }
+        
+        .instagram-link a {
+            color: #B76240;
+            text-decoration: none;
+            font-size: 29px;
+            font-weight: normal;
+        }
+        
+        .instagram-link a:hover {
+            color: #8F5A3F;
+        }
+        
+        /* Background elements */
+        .background-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .ellipse {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, 
+                rgba(255, 211, 116, 0) 79.33%, 
+                rgba(255, 211, 116, 0.59) 100%);
+        }
+        
+        .ellipse-1 {
+            width: 400px;
+            height: 400px;
+            top: -50px;
+            left: -100px;
+            animation: ellipseFloat 8s ease-in-out infinite;
+        }
+        
+        .ellipse-2 {
+            width: 300px;
+            height: 300px;
+            top: 50px;
+            right: -50px;
+            animation: ellipseFloat 8s ease-in-out infinite 2s;
+        }
+        
+        @keyframes ellipseFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+        
+        .vector-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(195, 115, 84, 0.08);
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <h3>Working Animation Controls</h3>
+        <p><strong>R</strong> - Restart animation</p>
+        <p><strong>1-6</strong> - Go to specific stage</p>
+        <p><strong>Current:</strong> <span id="current-stage">1</span></p>
+        <p><strong>Status:</strong> <span id="status">Ready</span></p>
+    </div>
+
+    <div class="landing-container">
+        <!-- Background Elements -->
+        <div class="background-elements">
+            <div class="ellipse ellipse-1"></div>
+            <div class="ellipse ellipse-2"></div>
+            <div class="vector-overlay"></div>
+        </div>
+        
+        <!-- Stage 1: Initial -->
+        <div class="stage active" id="stage-1">
+            <div class="big-text">Stage 1</div>
+            <div class="small-text">Coral background with floating elements</div>
+        </div>
+        
+        <!-- Stage 2: Letter C -->
+        <div class="stage" id="stage-2">
+            <div class="big-text">C</div>
+            <div class="small-text">First letter appears</div>
+        </div>
+        
+        <!-- Stage 3: Letter w -->
+        <div class="stage" id="stage-3">
+            <div class="big-text">C w</div>
+            <div class="small-text">Second letter appears</div>
+        </div>
+        
+        <!-- Stage 4: Coming Soon -->
+        <div class="stage" id="stage-4">
+            <div class="big-text">Coming Soon</div>
+            <div class="small-text">Full text appears</div>
+        </div>
+        
+        <!-- Stage 5: Portfolio -->
+        <div class="stage" id="stage-5">
+            <div class="big-text">Coming Soon</div>
+            <div class="small-text">website under construction</div>
+            <div class="portfolio-showcase" id="portfolio-1">
+                <div class="portfolio-frame frame-1">
+                    <div class="portfolio-content">Portfolio 1</div>
+                </div>
+                <div class="portfolio-frame frame-2">
+                    <div class="portfolio-content">Portfolio 2</div>
+                </div>
+                <div class="portfolio-frame frame-3">
+                    <div class="portfolio-content">Portfolio 3</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stage 6: Final -->
+        <div class="stage" id="stage-6">
+            <div class="big-text">Coming Soon</div>
+            <div class="small-text">website under construction. visit https://www.instagram.com/avery.b33/ for more recent work.</div>
+            <div class="portfolio-showcase visible" id="portfolio-2">
+                <div class="portfolio-frame frame-1">
+                    <div class="portfolio-content">Portfolio 1</div>
+                </div>
+                <div class="portfolio-frame frame-2">
+                    <div class="portfolio-content">Portfolio 2</div>
+                </div>
+                <div class="portfolio-frame frame-3">
+                    <div class="portfolio-content">Portfolio 3</div>
+                </div>
+            </div>
+            <div class="instagram-link" id="instagram-link">
+                <a href="https://www.instagram.com/avery.b33/" target="_blank">Instagram: @avery.b33</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class WorkingLandingAnimation {
+            constructor() {
+                this.currentStage = 0;
+                this.stages = document.querySelectorAll('.stage');
+                this.isRunning = false;
+                this.statusElement = document.getElementById('status');
+                this.currentStageElement = document.getElementById('current-stage');
+                
+                console.log('WorkingLandingAnimation initialized with', this.stages.length, 'stages');
+                this.init();
+            }
+            
+            init() {
+                this.statusElement.textContent = 'Initializing...';
+                this.setupStages();
+                this.start();
+            }
+            
+            setupStages() {
+                // Hide all stages except first
+                this.stages.forEach((stage, index) => {
+                    if (index === 0) {
+                        stage.classList.add('active');
+                    } else {
+                        stage.classList.remove('active');
+                    }
+                });
+                this.statusElement.textContent = 'Ready';
+            }
+            
+            start() {
+                if (this.isRunning) return;
+                
+                this.isRunning = true;
+                this.currentStage = 0;
+                this.advance();
+            }
+            
+            advance() {
+                if (this.currentStage >= this.stages.length) {
+                    this.complete();
+                    return;
+                }
+                
+                this.showStage(this.currentStage);
+                
+                // Wait 2 seconds then advance
+                setTimeout(() => {
+                    this.currentStage++;
+                    this.advance();
+                }, 2000);
+            }
+            
+            showStage(stageIndex) {
+                console.log('Showing stage', stageIndex + 1);
+                
+                // Hide all stages
+                this.stages.forEach(stage => {
+                    stage.classList.remove('active');
+                });
+                
+                // Show current stage
+                if (this.stages[stageIndex]) {
+                    this.stages[stageIndex].classList.add('active');
+                    this.currentStageElement.textContent = stageIndex + 1;
+                }
+                
+                // Trigger stage-specific animations
+                this.triggerStageAnimations(stageIndex);
+            }
+            
+            triggerStageAnimations(stageIndex) {
+                setTimeout(() => {
+                    switch(stageIndex) {
+                        case 4: // Stage 5: Portfolio
+                            const portfolio1 = document.getElementById('portfolio-1');
+                            if (portfolio1) portfolio1.classList.add('visible');
+                            break;
+                        case 5: // Stage 6: Instagram link
+                            const instagramLink = document.getElementById('instagram-link');
+                            if (instagramLink) instagramLink.classList.add('visible');
+                            break;
+                    }
+                }, 500);
+            }
+            
+            complete() {
+                this.statusElement.textContent = 'Complete!';
+                this.isRunning = false;
+            }
+            
+            goToStage(stageIndex) {
+                if (stageIndex >= 0 && stageIndex < this.stages.length) {
+                    this.currentStage = stageIndex;
+                    this.showStage(stageIndex);
+                }
+            }
+            
+            restart() {
+                this.currentStage = 0;
+                this.isRunning = false;
+                this.statusElement.textContent = 'Ready';
+                this.setupStages();
+                this.start();
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, creating WorkingLandingAnimation...');
+            const animation = new WorkingLandingAnimation();
+            
+            // Expose to window for testing
+            window.workingAnimation = animation;
+            
+            // Keyboard controls
+            document.addEventListener('keydown', (e) => {
+                switch(e.key) {
+                    case 'r':
+                    case 'R':
+                        animation.restart();
+                        break;
+                    case '1':
+                    case '2':
+                    case '3':
+                    case '4':
+                    case '5':
+                    case '6':
+                        const stageIndex = parseInt(e.key) - 1;
+                        animation.goToStage(stageIndex);
+                        break;
+                }
+            });
+            
+            console.log('WorkingLandingAnimation setup complete!');
+        });
+    </script>
+</body>
+</html>
