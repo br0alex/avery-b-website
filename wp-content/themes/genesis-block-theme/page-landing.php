@@ -15,7 +15,7 @@ get_header(); ?>
             <!-- Sticky Banner -->
         <div class="sticky-banner">
             <div class="banner-text-container">
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON </span>
             </div>
         </div>
 
