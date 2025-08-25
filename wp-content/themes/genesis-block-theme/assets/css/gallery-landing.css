@@ -48,8 +48,8 @@
 
 /* Main Content */
 .main-content {
-    padding-top: 58px; /* Account for sticky banner */
-    min-height: calc(100vh - 58px);
+    padding-top: 80px; /* Add more space from banner */
+    min-height: calc(100vh - 80px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,8 +66,8 @@
 }
 
 .gallery-border {
-    width: 1434px;
-    height: 819px;
+    width: 1200px;
+    height: 700px;
     border: 2px solid #A66145;
     display: flex;
     align-items: center;
@@ -178,9 +178,9 @@
 @media (max-width: 1500px) {
     .gallery-border {
         width: 90vw;
-        height: calc(90vw * 0.57); /* Maintain aspect ratio */
-        max-width: 1434px;
-        max-height: 819px;
+        height: calc(90vw * 0.58); /* Maintain aspect ratio */
+        max-width: 1200px;
+        max-height: 700px;
     }
 }
 
