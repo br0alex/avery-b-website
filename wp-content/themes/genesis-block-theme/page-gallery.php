@@ -16,26 +16,6 @@ get_header(); ?>
         <div class="sticky-banner">
             <div class="banner-text-container">
                 <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
-                <span class="banner-text">// NEW SITE // COMING SOON</span>
             </div>
         </div>
 
@@ -88,11 +68,7 @@ get_header(); ?>
                             <div class="gallery-caption">Gallery Image 7</div>
                         </div>
                         
-                        <!-- Gallery Image 8 -->
-                        <div class="gallery-slide">
-                            <img src="<?php echo get_site_url(); ?>/images/Property 1=scroll gallery 8.jpg" alt="Gallery Image 8">
-                            <div class="gallery-caption">Gallery Image 8</div>
-                        </div>
+
                         
                         <!-- Gallery Image 9 -->
                         <div class="gallery-slide">
@@ -114,7 +90,6 @@ get_header(); ?>
                         
                         <!-- Slider Navigation Dots -->
                         <div class="slider-dots">
-                            <div class="slider-dot"></div>
                             <div class="slider-dot"></div>
                             <div class="slider-dot"></div>
                             <div class="slider-dot"></div>
