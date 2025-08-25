@@ -28,7 +28,7 @@
 .banner-text-container {
     display: flex;
     white-space: nowrap;
-    animation: scroll-text 40s linear infinite;
+    animation: scroll-text 15s linear infinite;
     width: max-content;
 }
 
@@ -37,7 +37,7 @@
     font-family: 'Kay Pho Du', sans-serif;
     font-weight: 600;
     font-size: 24px;
-    margin-right: 20px;
+    margin-right: 0;
     flex-shrink: 0;
 }
 
