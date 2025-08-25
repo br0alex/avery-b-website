@@ -84,9 +84,9 @@ get_header(); ?>
         </div>
     </div>
 
-    <!-- Vector.svg logo in bottom right corner -->
+    <!-- averyfinallogo.svg logo in bottom right corner -->
     <div class="bottom-right-image">
-        <img src="<?php echo get_site_url(); ?>/Vector.svg" alt="Logo">
+        <img src="<?php echo get_site_url(); ?>/averyfinallogo.svg" alt="Logo">
     </div>
 </div>
 
