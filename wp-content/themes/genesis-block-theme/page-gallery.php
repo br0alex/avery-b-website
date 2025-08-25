@@ -86,7 +86,7 @@ get_header(); ?>
 
     <!-- Vector.svg logo in bottom right corner -->
     <div class="bottom-right-image">
-        <img src="<?php echo get_template_directory_uri(); ?>/../Vector.svg" alt="Logo">
+        <img src="<?php echo get_site_url(); ?>/Vector.svg" alt="Logo">
     </div>
 </div>
 
