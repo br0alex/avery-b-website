@@ -84,9 +84,9 @@ get_header(); ?>
         </div>
     </div>
 
-    <!-- Layer1.svg in bottom right corner -->
+    <!-- Vector.svg logo in bottom right corner -->
     <div class="bottom-right-image">
-        <img src="<?php echo get_template_directory_uri(); ?>/../Layer 1.svg" alt="Layer 1">
+        <img src="<?php echo get_template_directory_uri(); ?>/../Vector.svg" alt="Logo">
     </div>
 </div>
 
