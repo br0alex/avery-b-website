@@ -6,22 +6,36 @@
  * designed to match the exact specifications.
  */
 
+// Enqueue the slider JavaScript
+wp_enqueue_script('gallery-slider', get_template_directory_uri() . '/assets/js/gallery-slider.js', array(), '1.0.0', true);
+
 get_header(); ?>
 
 <div class="gallery-landing-page">
             <!-- Sticky Banner -->
         <div class="sticky-banner">
             <div class="banner-text-container">
-                <span class="banner-text">NEW SITE // COMING SOON</span>
-                <span class="banner-text">NEW SITE // COMING SOON</span>
-                <span class="banner-text">NEW SITE // COMING SOON</span>
-                <span class="banner-text">NEW SITE // COMING SOON</span>
-                <span class="banner-text">NEW SITE // COMING SOON</span>
-                <span class="banner-text">NEW SITE // COMING SOON</span>
-                <span class="banner-text">NEW SITE // COMING SOON</span>
-                <span class="banner-text">NEW SITE // COMING SOON</span>
-                <span class="banner-text">NEW SITE // COMING SOON</span>
-                <span class="banner-text">NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
+                <span class="banner-text">// NEW SITE // COMING SOON</span>
             </div>
         </div>
 
@@ -31,47 +45,88 @@ get_header(); ?>
         <div class="gallery-container">
             <div class="gallery-border">
                 <div class="gallery-content">
-                    <?php
-                    // Get gallery images from custom post type
-                    $gallery_images = get_posts(array(
-                        'post_type' => 'gallery_image',
-                        'numberposts' => -1,
-                        'orderby' => 'menu_order',
-                        'order' => 'ASC',
-                        'post_status' => 'publish'
-                    ));
-                    
-                    if ($gallery_images) {
-                        echo '<div class="gallery-grid">';
-                        foreach ($gallery_images as $image_post) {
-                            // Get image source (featured image or custom URL)
-                            $image_url = get_post_meta($image_post->ID, '_gallery_image_url', true);
-                            if (!$image_url && has_post_thumbnail($image_post->ID)) {
-                                $image_url = get_the_post_thumbnail_url($image_post->ID, 'full');
-                            }
-                            
-                            // Get alt text and caption
-                            $alt_text = get_post_meta($image_post->ID, '_gallery_image_alt', true) ?: $image_post->post_title;
-                            $caption = get_post_meta($image_post->ID, '_gallery_image_caption', true);
-                            
-                            if ($image_url) {
-                                echo '<div class="gallery-item">';
-                                echo '<img src="' . esc_url($image_url) . '" alt="' . esc_attr($alt_text) . '" />';
-                                if ($caption) {
-                                    echo '<div class="gallery-caption">' . esc_html($caption) . '</div>';
-                                }
-                                echo '</div>';
-                            }
-                        }
-                        echo '</div>';
-                    } else {
-                        // Fallback placeholder if no images
-                        echo '<div class="gallery-placeholder">';
-                        echo '<p>No gallery images found.</p>';
-                        echo '<p>Add images through WordPress Admin → Gallery Images</p>';
-                        echo '</div>';
-                    }
-                    ?>
+                    <div class="gallery-slider">
+                        <!-- Gallery Image 1 -->
+                        <div class="gallery-slide">
+                            <img src="<?php echo get_site_url(); ?>/images/Property 1=scroll gallery 1.jpg" alt="Gallery Image 1">
+                            <div class="gallery-caption">Gallery Image 1</div>
+                        </div>
+                        
+                        <!-- Gallery Image 2 -->
+                        <div class="gallery-slide">
+                            <img src="<?php echo get_site_url(); ?>/images/Property 1=scroll gallery 2.jpg" alt="Gallery Image 2">
+                            <div class="gallery-caption">Gallery Image 2</div>
+                        </div>
+                        
+                        <!-- Gallery Image 3 -->
+                        <div class="gallery-slide">
+                            <img src="<?php echo get_site_url(); ?>/images/Property 1=scroll gallery 3.jpg" alt="Gallery Image 3">
+                            <div class="gallery-caption">Gallery Image 3</div>
+                        </div>
+                        
+                        <!-- Gallery Image 4 -->
+                        <div class="gallery-slide">
+                            <img src="<?php echo get_site_url(); ?>/images/Property 1=scroll gallery 4.jpg" alt="Gallery Image 4">
+                            <div class="gallery-caption">Gallery Image 4</div>
+                        </div>
+                        
+                        <!-- Gallery Image 5 -->
+                        <div class="gallery-slide">
+                            <img src="<?php echo get_site_url(); ?>/images/Property 1=scroll gallery 5.jpg" alt="Gallery Image 5">
+                            <div class="gallery-caption">Gallery Image 5</div>
+                        </div>
+                        
+                        <!-- Gallery Image 6 -->
+                        <div class="gallery-slide">
+                            <img src="<?php echo get_site_url(); ?>/images/Property 1=scroll gallery 6.jpg" alt="Gallery Image 6">
+                            <div class="gallery-caption">Gallery Image 6</div>
+                        </div>
+                        
+                        <!-- Gallery Image 7 -->
+                        <div class="gallery-slide">
+                            <img src="<?php echo get_site_url(); ?>/images/Property 1=scroll gallery 7.jpg" alt="Gallery Image 7">
+                            <div class="gallery-caption">Gallery Image 7</div>
+                        </div>
+                        
+                        <!-- Gallery Image 8 -->
+                        <div class="gallery-slide">
+                            <img src="<?php echo get_site_url(); ?>/images/Property 1=scroll gallery 8.jpg" alt="Gallery Image 8">
+                            <div class="gallery-caption">Gallery Image 8</div>
+                        </div>
+                        
+                        <!-- Gallery Image 9 -->
+                        <div class="gallery-slide">
+                            <img src="<?php echo get_site_url(); ?>/images/Property 1=scroll gallery 9.jpg" alt="Gallery Image 9">
+                            <div class="gallery-caption">Gallery Image 9</div>
+                        </div>
+                        
+                        <!-- Gallery Image 10 -->
+                        <div class="gallery-slide">
+                            <img src="<?php echo get_site_url(); ?>/images/Property 1=scroll gallery 10.jpg" alt="Gallery Image 10">
+                            <div class="gallery-caption">Gallery Image 10</div>
+                        </div>
+                        
+                        <!-- Gallery Image 11 -->
+                        <div class="gallery-slide">
+                            <img src="<?php echo get_site_url(); ?>/images/Property 1=scroll gallery 11.jpg" alt="Gallery Image 11">
+                            <div class="gallery-caption">Gallery Image 11</div>
+                        </div>
+                        
+                        <!-- Slider Navigation Dots -->
+                        <div class="slider-dots">
+                            <div class="slider-dot"></div>
+                            <div class="slider-dot"></div>
+                            <div class="slider-dot"></div>
+                            <div class="slider-dot"></div>
+                            <div class="slider-dot"></div>
+                            <div class="slider-dot"></div>
+                            <div class="slider-dot"></div>
+                            <div class="slider-dot"></div>
+                            <div class="slider-dot"></div>
+                            <div class="slider-dot"></div>
+                            <div class="slider-dot"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

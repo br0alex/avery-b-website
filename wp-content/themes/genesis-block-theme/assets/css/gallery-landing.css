@@ -43,7 +43,7 @@
 
 @keyframes scroll-text {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-100%); }
 }
 
 /* Main Content */
@@ -81,8 +81,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    overflow: auto;
+    padding: 0;
+    overflow: hidden;
 }
 
 .gallery-slider {
@@ -117,16 +117,7 @@
 }
 
 .gallery-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(166, 97, 69, 0.9));
-    color: white;
-    padding: 20px 15px 15px;
-    font-size: 16px;
-    line-height: 1.4;
-    text-align: center;
+    display: none;
 }
 
 /* Slider Navigation Dots */
