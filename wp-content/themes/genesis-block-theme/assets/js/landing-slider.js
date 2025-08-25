@@ -90,4 +90,51 @@ document.addEventListener('DOMContentLoaded', function() {
     sliderContainers.forEach(container => {
         new GallerySlider(container);
     });
+    
+    // Initialize infinite banner scroll
+    initializeInfiniteBanner();
+    
+    // Handle window resize for banner
+    window.addEventListener('resize', debounce(initializeInfiniteBanner, 250));
 });
+
+// Debounce function to limit resize events
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Function to create infinite banner scroll
+function initializeInfiniteBanner() {
+    const bannerContainer = document.querySelector('.banner-text-container');
+    if (!bannerContainer) return;
+    
+    // Get the first banner text span
+    const firstSpan = bannerContainer.querySelector('.banner-text');
+    if (!firstSpan) return;
+    
+    // Get the text content
+    const bannerText = firstSpan.textContent;
+    
+    // Clear the container
+    bannerContainer.innerHTML = '';
+    
+    // Create enough spans to fill the screen width plus extra for seamless scrolling
+    const screenWidth = window.innerWidth;
+    const spanWidth = 300; // Approximate width of one span
+    const numSpans = Math.ceil((screenWidth / spanWidth) * 3); // 3x screen width for seamless loop
+    
+    for (let i = 0; i < numSpans; i++) {
+        const span = document.createElement('span');
+        span.className = 'banner-text';
+        span.textContent = bannerText;
+        bannerContainer.appendChild(span);
+    }
+}

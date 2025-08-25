@@ -1,17 +1,17 @@
 <?php
 /**
- * Template Name: Gallery Landing Page
+ * Template Name: Landing Page
  * 
- * This is a custom page template for the Gallery landing page
- * designed to match the exact specifications.
+ * This is a custom page template for the Landing page
+ * with image slider and infinite banner scroll.
  */
 
 // Enqueue the slider JavaScript
-wp_enqueue_script('gallery-slider', get_template_directory_uri() . '/assets/js/gallery-slider.js', array(), '1.0.0', true);
+wp_enqueue_script('landing-slider', get_template_directory_uri() . '/assets/js/landing-slider.js', array(), '1.0.0', true);
 
 get_header(); ?>
 
-<div class="gallery-landing-page">
+<div class="landing-page">
             <!-- Sticky Banner -->
         <div class="sticky-banner">
             <div class="banner-text-container">
@@ -21,9 +21,9 @@ get_header(); ?>
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Photo Gallery Container -->
-        <div class="gallery-container">
-            <div class="gallery-border">
+        <!-- Image Slider Container -->
+        <div class="slider-container">
+            <div class="slider-border">
                 <div class="gallery-content">
                     <div class="gallery-slider">
                         <!-- Gallery Image 1 -->
