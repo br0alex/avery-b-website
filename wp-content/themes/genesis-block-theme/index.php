@@ -19,7 +19,7 @@ wp_enqueue_script('landing-slider', get_template_directory_uri() . '/assets/js/l
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-    <title><?php bloginfo('name'); ?> - Coming Soon</title>
+    <title>Avery Boroff</title>
     <meta name="description" content="New site coming soon. Follow us on Instagram @avery.b33">
     <link rel="icon" href="<?php echo get_site_url(); ?>/favicon.ico" type="image/x-icon">
     <?php wp_head(); ?>
